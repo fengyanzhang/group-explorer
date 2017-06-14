@@ -1,0 +1,50 @@
+
+//----------------修改this.link=xxxx里面
+            .attr('id', function (d) {
+                return d.source.index + '_' + d.target.index
+            })
+            .attr('marker-end', function (d) {
+                if (d.source.index == d.target.index) {
+                    return false; //不应该有指向自己的关系 异常处理
+                } else {
+                    return "url(#arrow)"
+                }
+            })
+
+//----------------修改this.linetext=xxx里面
+            .append('svg:g')
+            .append('text')
+            .append('avg:textPath')
+            .attr("startOffset", "50%")
+            .attr("text-anchor", "middle")
+            .attr("xlink:href", function(d) {
+                if (d.source.index == d.target.index) {
+                    return false; //不应该有指向自己的关系 异常处理
+                } else {
+                    return "#" + d.source.index + "_" + d.target.index;
+                }
+            })
+
+//----------------修改this.tickxxx里面 新增 arcPath方法
+var arcPath=function(leftHand, d) {
+    var start = leftHand ? d.source : d.target,
+            end = leftHand ? d.target : d.source,
+            dx = end.x - start.x,
+            dy = end.y - start.y,
+            dr = Math.sqrt(dx * dx + dy * dy),
+            sweep = leftHand ? 0 : 1;
+    return "M" + start.x + "," + start.y + "A" + dr + "," + dr +
+            " 0 0," + sweep + " " + end.x + "," + end.y;
+}
+
+this.tick=function() {
+    _this.link.attr("d", function(d) {
+        //弧线路径位置
+        return arcPath(false, d);
+    });
+    //关系文字显示的位置
+    _this.linetext.attr("d", function(d) {
+        return arcPath(d.source.x < d.target.x, d);
+    });
+   //其他
+};
