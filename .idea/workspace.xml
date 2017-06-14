@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9854e5f9-c9cb-4c08-aa7c-d70a54ad8b2b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo3-d3-v4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/d3/d3.v4.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/修改.html" />
-    </list>
+    <list default="true" id="9854e5f9-c9cb-4c08-aa7c-d70a54ad8b2b" name="Default" comment="" />
     <ignored path="es6Test.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
